@@ -5,7 +5,7 @@ const { Mixin } = Ember;
 
 export default Mixin.create({
   /* overridable properties/methods */
-  autoReloadStrategy: 'increasing', // can be 'increasing' or 'fixed'
+  autoReloadStrategy: 'incremental', // can be 'incremental' or 'fixed'
 
   autoReloadDelay: 30000,
 
@@ -70,7 +70,7 @@ export default Mixin.create({
     switch (this.get('autoReloadStrategy')) {
       case 'fixed':
         return this.get('autoReloadDelay');
-      case 'increasing':
+      case 'incremental':
         return attributesChanged ?
           this.get('autoReloadDelay') :
           Math.min(
